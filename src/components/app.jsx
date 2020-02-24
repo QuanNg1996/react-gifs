@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import giphy from 'giphy-api';
 
@@ -5,7 +6,7 @@ import SearchBar from './search_bar.jsx';
 import Gif from './gif.jsx';
 import GifList from './gif_list.jsx';
 
-const Giphy_api = 'iRZMOL6Ti5LPSHON2f4HUae1lhTJuaSo';
+const GiphyApi = 'iRZMOL6Ti5LPSHON2f4HUae1lhTJuaSo';
 
 class App extends Component {
   constructor(props) {
@@ -14,11 +15,11 @@ class App extends Component {
     this.state = {
       gifs: [],
       selectedGifId: "LrWZdS5NzQbJyTQMNg"
-    }
+    };
   }
 
   search = (query) => {
-      giphy({ apiKey: Giphy_api, https: true})
+    giphy({ apiKey: GiphyApi, https: true })
       .search({
         q: query,
         rating: 'g',
@@ -26,8 +27,8 @@ class App extends Component {
       }, (error, result) => {
         this.setState({
           gifs: result.data
+        });
       });
-    });
   }
 
   selectGif = (id) => {
@@ -38,7 +39,7 @@ class App extends Component {
 
 
   render () {
-    return(
+    return (
       <div>
         <div className="left-scene">
           <SearchBar searchFunction={this.search} />
